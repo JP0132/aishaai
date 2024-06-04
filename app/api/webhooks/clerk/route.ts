@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
-console.log("hi i am in route");
+
 export async function POST(req: Request) {
   console.log("hi i am in route");
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
