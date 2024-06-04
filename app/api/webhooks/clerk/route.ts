@@ -4,8 +4,9 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
-
+console.log("hi i am in route");
 export async function POST(req: Request) {
+  console.log("hi i am in route");
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
@@ -51,6 +52,8 @@ export async function POST(req: Request) {
     });
   }
 
+  console.log(evt);
+
   // Get the ID and type
   const { id } = evt.data;
   const eventType = evt.type;
@@ -60,7 +63,10 @@ export async function POST(req: Request) {
   // CREATE
   // Create the user in the database
   if (eventType === "user.created") {
-    console.log(evt.data);
+    console.log(
+      "This is the event data when checked is user.created",
+      evt.data
+    );
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
 
